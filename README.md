@@ -23,3 +23,7 @@ The above API has been tested with multiple test cases as below:
 <img width="726" alt="image" src="https://user-images.githubusercontent.com/112477826/187408582-fb4e204d-7511-4752-942f-35b467386422.png">
 
  All the above test cases are asserted with presumed values.
+
+You could download the collections and import "testCollection" it into Postman Collections and check for the Test Assertions from "apiReq"- v01
+
+<img width="262" alt="image" src="https://user-images.githubusercontent.com/112477826/187409785-1f933fcc-b40b-4458-8318-5fecb023e654.png">
