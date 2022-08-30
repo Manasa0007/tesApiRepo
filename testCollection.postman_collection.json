@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "a48d16ff-dc35-4c78-844e-734bc443a971",
+		"name": "testCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22348689"
+	},
+	"item": [
+		{
+			"name": "apiReq",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test-01: Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Test02: Body matches count number\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"count\");",
+							"});",
+							"",
+							"const schema = {",
+							"    \"count\": 1425,",
+							"    \"entries\": [",
+							"        {",
+							"            \"API\": \"AdoptAPet\",",
+							"            \"Description\": \"Resource to help get pets adopted\",",
+							"            \"Auth\": \"apiKey\",",
+							"            \"HTTPS\": true,",
+							"            \"Cors\": \"yes\",",
+							"            \"Link\": \"https://www.adoptapet.com/public/apis/pet_list.html\",",
+							"            \"Category\": \"Animals\"",
+							"        }]};",
+							"",
+							"const showData = { ",
+							"    \"required\": [\"count\", \"entries\"],",
+							"    \"properties\": {",
+							"        \"entries\": [",
+							"            {",
+							"                \"required\": [\"API\",\"Description\",\"Auth\", \"HTTPS\", \"Cors\",\"Link\",\"Category\"]",
+							"            }",
+							"        ],",
+							"    },",
+							"};",
+							"var jsonResponse = pm.response.json();",
+							"pm.test('Test03: Validate Schema Check', function() {",
+							"  pm.expect(tv4.validate(schema, showData)).to.be.true;",
+							"});",
+							"",
+							"pm.test(\"Test04: Response time is less than 1500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
